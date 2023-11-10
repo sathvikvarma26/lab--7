@@ -42,27 +42,6 @@ predicted_class = clf.predict([test_vector])
 print(f"The predicted class for the test vector: {predicted_class}")
 
 
-# In[3]:
-
-
-decision_values = clf.decision_function(X_test[['embed_0', 'embed_1']])
- 
-# Relate the decision values to the class values
-predictions = clf.predict(X_test[['embed_0', 'embed_1']])
- 
-# Test the accuracy using your own logic for class determination
-# Here, we'll simply compare decision values against zero for binary classification
-# Adjust this logic based on the specifics of your classification problem
- 
-correct_predictions = 0
-for i in range(len(predictions)):
-    if (predictions[i] == 1 and decision_values[i] > 0) or (predictions[i] == 0 and decision_values[i] < 0):
-        correct_predictions += 1
- 
-accuracy = correct_predictions / len(y_test)
-print(f"Accuracy using decision values: {accuracy}")
- 
-
 
 # In[ ]:
 import numpy as np
@@ -100,6 +79,8 @@ accuracy = np.mean(correct_predictions)
 
 # Print the accuracy
 print(f"Accuracy: {accuracy:.2f}")
+
+
 import numpy as np
 import pandas as pd
 from sklearn import svm
